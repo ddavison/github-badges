@@ -21,7 +21,7 @@ get '/star.svg' do
       # everything is ok.
       content_type 'image/svg+xml'
       return create_button({
-        :button_text => 'star',
+        :button_text => 'Star',
         :count_url   => "https://github.com/#{user}/#{repo}/stargazers",
         :count       => star_count,
         :button_url  => "https://github.com/#{user}/#{repo}"
@@ -47,7 +47,7 @@ get '/fork.svg' do
       # everything is ok.
       content_type 'image/svg+xml'
       return create_button({
-        :button_text => 'star',
+        :button_text => 'Fork',
         :count_url   => "https://github.com/#{user}/#{repo}/network",
         :count       => fork_count,
         :button_url  => "https://github.com/#{user}/#{repo}/fork"
