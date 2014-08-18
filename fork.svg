@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="90" height="18">
+<!DOCTYPE svg PUBLIC "-//W3C//DDTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="90"
+  height="18">
   <linearGradient id="a" x2="0" y2="100%">
     <stop offset="0" stop-color="#fff" stop-opacity=".7"/>
     <stop offset=".1" stop-color="#aaa" stop-opacity=".1"/>
@@ -10,9 +15,56 @@
   <path fill="#777" d="M37 0h4v18h-4z"/>
   <rect rx="4" width="90" height="18" fill="url(#a)"/>
   <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,sans-serif" font-size="11">
-    <text x="19.5" y="13" fill="#010101" fill-opacity=".3">Fork</text>
-    <text x="19.5" y="12">Fork</text>
-    <text x="62.5" y="13" fill="#010101" fill-opacity=".3">2</text>
-    <text x="62.5" y="12">2</text>
+    <a id="link" xlink:href="#" target="_new">
+      <text x="19.5" y="13" fill="#fff">Fork</text>
+    </a>
+
+    <a id="count-link" xlink:href="#" target="_new">
+      <text fill="#fff" id="count" x="62.5" y="12"></text>
+    </a>
   </g>
+
+  <script>
+    <![CDATA[
+        var params = {},
+            countLink = document.getElementById('count-link'),
+            link      = document.getElementById('link'),
+            count     = document.getElementById('count');
+
+        location.href.split('?')[1].split('&').forEach(
+          function(i) {
+            params[i.split('=')[0]] = i.split('=')[1];
+          }
+        );
+
+        if (params.user && params.repo) {
+          var href = "https://github.com/" + params.user + "/" + params.repo + "/network";
+
+          countLink.setAttribute('xlink:href', href);
+          link.setAttribute('xlink:href', "https://github.com/" + params.user + "/" + params.repo);
+          getCount("https://api.github.com/repos/" + params.user + "/" + params.repo);
+        }
+
+        function getCount(url) {
+          var xmlhttp;
+          if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+          }
+          else {
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+              count.innerHTML = addCommas(JSON.parse(xmlhttp.responseText).forks_count);
+            }
+          }
+          xmlhttp.open("GET", url, true);
+          xmlhttp.send();
+          }
+
+        function addCommas(n) {
+          return String(n).replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+        }
+    ]]>
+    </script>
 </svg>
