@@ -1,0 +1,13 @@
+<script>
+  var xmlns = "http://www.w3.org/2000/svg";
+  var txtElem = document.createElementNS(xmlns, "text");
+
+  txtElem.setAttributeNS(null,"x",50);
+  txtElem.setAttributeNS(null,"y",50);
+  txtElem.setAttributeNS(null,"font-size",15);
+
+  var helloTxt = document.createTextNode("Hello World!");
+  txtElem.appendChild(helloTxt)
+   
+  document.documentElement.appendChild(txtElem);
+</script>
