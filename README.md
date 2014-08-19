@@ -1,8 +1,8 @@
 github-svg-buttons
 ===============
 
-[![star this repo](http://github-svg-buttons.herokuapp.com/star.svg?user=ddavison&repo=github-svg-buttons)](http://github.com/ddavison/sublime-tabs)
-[![fork this repo](http://github-svg-buttons.herokuapp.com/fork.svg?user=ddavison&repo=github-svg-buttons)](http://github.com/ddavison/sublime-tabs/fork)
+[![star this repo](http://github-svg-buttons.herokuapp.com/star.svg?user=ddavison&repo=github-svg-buttons)](http://github.com/ddavison/github-svg-buttons)
+[![fork this repo](http://github-svg-buttons.herokuapp.com/fork.svg?user=ddavison&repo=github-svg-buttons)](http://github.com/ddavison/github-svg-buttons/fork)
 
 
 # Using the buttons
