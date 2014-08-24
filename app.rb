@@ -2,6 +2,7 @@ require 'sinatra'
 require 'haml'
 require 'json'
 require 'open-uri'
+require 'cgi'
 
 user = nil
 repo = nil
@@ -20,7 +21,13 @@ get '/star.svg' do
 
       # everything is ok.
       content_type 'image/svg+xml'
+      
+      # Avoid CDN caching
+      now = CGI::rfc1123_date(Time.now)
       response.headers['Cache-Control'] = 'no-cache,no-store,must-revalidate,max-age=0'
+      response.headers["Date"] = now
+      response.headers["Expires"] = now
+      
       return create_button({
         :button_text => 'stars',
         :count_url   => "https://github.com/#{user}/#{repo}/stargazers",
