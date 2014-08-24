@@ -7,7 +7,7 @@ user = nil
 repo = nil
 
 get '/' do
-  "hello"
+  'hello'
 end
 
 get '/star.svg' do
@@ -20,6 +20,7 @@ get '/star.svg' do
 
       # everything is ok.
       content_type 'image/svg+xml'
+      response.headers['Cache-Control'] = 'no-cache,no-store,must-revalidate,max-age=0'
       return create_button({
         :button_text => 'stars',
         :count_url   => "https://github.com/#{user}/#{repo}/stargazers",
@@ -46,6 +47,7 @@ get '/fork.svg' do
 
       # everything is ok.
       content_type 'image/svg+xml'
+      response.headers['Cache-Control'] = 'no-cache,no-store,must-revalidate,max-age=0'
       return create_button({
         :button_text => 'forks',
         :count_url   => "https://github.com/#{user}/#{repo}/network",
