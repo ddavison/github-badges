@@ -29,7 +29,7 @@ get '/star.svg' do
       response.headers["Expires"] = now
       
       return create_button({
-        :button_text => 'stars',
+        :button_text => 'star',
         :count_url   => "https://github.com/#{user}/#{repo}/stargazers",
         :count       => star_count,
         :button_url  => "https://github.com/#{user}/#{repo}"
@@ -62,7 +62,7 @@ get '/fork.svg' do
       response.headers["Expires"] = now
       
       return create_button({
-        :button_text => 'forks',
+        :button_text => 'fork',
         :count_url   => "https://github.com/#{user}/#{repo}/network",
         :count       => fork_count,
         :button_url  => "https://github.com/#{user}/#{repo}/fork"
