@@ -1,0 +1,101 @@
+!!!
+%html
+  %head
+    %title Create a button for your repo!
+    %script{:src => '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'}
+    %script{:src => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js'}
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'}/
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => '//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css'}/
+    :css
+      #codeThingy #code {
+        width: 100%;
+        height: 100px;
+        font-family: Consolas;
+      }
+  %body
+    #main-container.container
+      %header
+        %h1 GitHub SVG Buttons
+        %address
+          Generate your own buttons...
+          %a{:href => 'https://github.com/ddavison/sublime-tabs'}
+            %img{:alt => 'star this repo', :src => 'http://github-svg-buttons.herokuapp.com/star.svg?user=ddavison&repo=sublime-tabs'}/
+          %a{:href => 'https://github.com/ddavison/sublime-tabs/fork'}
+            %img{:alt => 'fork this repo', :src => 'http://github-svg-buttons.herokuapp.com/fork.svg?user=ddavison&repo=sublime-tabs'}/
+      %main
+        #codeThingy.modal
+          .modal-dialog.modal-lg
+            .modal-content
+              .modal-header
+                %button.close{:type => 'button', 'data-dismiss' => 'modal'}
+                  %span{'aria-hidden' => true} &times;
+                  %span.sr-only Close
+                %h4.modal-title SVG Buttons
+              .modal-body
+                %strong Preview:
+                %img{:id => 'img-star', :alt => 'that repo doesnt exist'}/
+                %img{:id => 'img-fork', :alt => 'that repo doesnt exist'}/
+                %br/
+                %br/
+                %strong Code:
+                %textarea{:id => 'code'}
+              .modal-footer
+                %button.btn.btn-default{:type => 'button', 'data-dismiss' => 'modal'} Close
+        %form#form
+          %select#output-to
+            %option{:value => 'markdown'} Markdown
+            %option{:value => 'html-image'} &lt;img .. /&gt;
+            %option{:value => 'haml'} Haml
+          %input{:id => 'user', :type => 'text', :placeholder => 'enter the username of the repo'}
+          %input{:id => 'repo', :type => 'text', :placeholder => 'enter the repo name'}
+          %button{:id => 'btn-generate'}
+            Generate!
+
+    :javascript
+      $(document).ready((function(){
+        $("#codeThing").modal({
+          keyboard: true
+        });
+        $("#btn-generate").on('click', function(e) {
+          e.preventDefault();
+          var user = $("#user").val();
+          var repo = $("#repo").val();
+          var githubUrl = "https://github.com/" + user + "/" + repo;
+          var forkUrl = githubUrl + "/fork";
+          var baseUrl = "http://github-svg-buttons.herokuapp.com/";
+          var outputTo = $("#output-to").val();
+
+          // final variable to show user.
+          var output = "";
+
+          var starImg = baseUrl + "star.svg?user=" + user + "&repo=" + repo;
+          var forkImg = baseUrl + "fork.svg?user=" + user + "&repo=" + repo
+          $("#img-star").prop('src', starImg);
+          $("#img-fork").prop('src', forkImg);
+          switch (outputTo) {
+            case "markdown":
+              var starMarkdown = "[![star this repo](" + starImg + ")](" + githubUrl + ")";
+              var forkMarkdown = "[![fork this repo](" + forkImg + ")](" + forkUrl + ")";
+              output = starMarkdown + '\n' + forkMarkdown;
+              break;
+            case "html-image":
+              var starHtml = "<a href=\"" + githubUrl + "\"><img alt=\"star this repo\" src=\"" + starImg + "\" /></a>"
+              var forkHtml = "<a href=\"" + forkUrl + "\"><img alt=\"fork this repo\" src=\"" + forkImg + "\" /></a>"
+              output = starHtml + '\n' + forkHtml;
+              break;
+            case "haml":
+              var starHaml = "%a{:href => '" + githubUrl + "'}\n  %img{:alt => 'star this repo', :src => '" + starImg + "'}/"
+              var forkHaml = "%a{:href => '" + forkUrl + "'}\n  %img{:alt => 'fork this repo', :src => '" + forkImg + "'}/"
+              output = starHaml + '\n' + forkHaml;
+              break;
+          }
+          showCodeThingy(output);
+        });
+
+        var showCodeThingy = function(text) {
+          $("#code").val(text);
+
+          $("#codeThingy").modal('show');
+          $("#code").focus().select();
+        };
+      })());

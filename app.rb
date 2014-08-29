@@ -8,7 +8,7 @@ user = nil
 repo = nil
 
 get '/' do
-  'hello'
+  haml :index
 end
 
 get '/star.svg' do
