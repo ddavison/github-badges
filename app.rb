@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'haml'
 require 'json'
-require 'open-uri'
+require 'net/http'
 require 'cgi'
 
 user = nil
@@ -11,23 +11,27 @@ get '/' do
   haml :index
 end
 
+get '/limit' do
+  
+end
+
 get '/star.svg' do
   if params[:user]
     if params[:repo]
       user = params[:user]
       repo = params[:repo]
 
-      star_count = get("https://api.github.com/repos/#{user}/#{repo}", 'stargazers_count')
+      star_count = get("https://api.github.com/repos/#{user}/#{repo}", 'stargazers_count', {user: user, repo: repo})
 
       # everything is ok.
       content_type 'image/svg+xml'
-      
+
       # Avoid CDN caching
       now = CGI::rfc1123_date(Time.now)
       response.headers['Cache-Control'] = 'no-cache,no-store,must-revalidate,max-age=0'
       response.headers["Date"] = now
       response.headers["Expires"] = now
-      
+
       return create_button({
         :button_text => 'star',
         :count_url   => "https://github.com/#{user}/#{repo}/stargazers",
@@ -50,7 +54,7 @@ get '/fork.svg' do
       user = params[:user]
       repo = params[:repo]
 
-      fork_count = get("https://api.github.com/repos/#{user}/#{repo}", 'forks_count')
+      fork_count = get("https://api.github.com/repos/#{user}/#{repo}", 'forks_count', {user: user, repo: repo})
 
       # everything is ok.
       content_type 'image/svg+xml'
@@ -60,7 +64,7 @@ get '/fork.svg' do
       response.headers['Cache-Control'] = 'no-cache,no-store,must-revalidate,max-age=0'
       response.headers["Date"] = now
       response.headers["Expires"] = now
-      
+
       return create_button({
         :button_text => 'fork',
         :count_url   => "https://github.com/#{user}/#{repo}/network",
@@ -77,8 +81,32 @@ get '/fork.svg' do
   end
 end
 
-def get(api_url, prop)
-  JSON.parse(open(api_url).read)[prop]
+def get(api_url, prop, args)
+  cached_response = "cache/#{args[:user]}:#{args[:repo]}"
+  uri = URI.parse api_url
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+  request = Net::HTTP::Get.new(uri.request_uri)
+
+  if File.exist?(cached_response)
+    request['If-Modified-Since'] = File.stat(cached_response).mtime.rfc2822
+
+    response = http.request(request)
+    p response
+
+    open cached_response, 'w' do |io|
+      io.write response.body
+    end if response.is_a?(Net::HTTPSuccess)
+  else
+    response = http.request(request)
+    open cached_response, 'w' do |io|
+      io.write response.body
+    end
+  end
+
+  JSON.parse(File.read(cached_response))[prop]
 end
 
 def create_button(opts)
