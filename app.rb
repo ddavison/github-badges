@@ -11,8 +11,11 @@ get '/' do
   haml :index
 end
 
-get '/limit' do
-  
+get '/list' do
+  list = ''
+  Dir['cache/*'].each {|file| list += file + '<br />'}
+
+  list
 end
 
 get '/star.svg' do
