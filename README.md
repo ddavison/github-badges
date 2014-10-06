@@ -8,12 +8,12 @@ github-svg-buttons
 # Using the buttons
 ## Starring
   ```
-  http://github-svg-buttons.herokuapp.com/star.svg?user=<USERNAME>&repo=<REPONAME>
+  http://github-svg-buttons.herokuapp.com/star.svg?user=<USERNAME>&repo=<REPONAME>[&background=<HEX-COLOR>&color=<HEX-COLOR>]
   ```
-  
+
 ## Forking
   ```
-  http://github-svg-buttons.herokuapp.com/fork.svg?user=<USERNAME>&repo=<REPONAME>
+  http://github-svg-buttons.herokuapp.com/fork.svg?user=<USERNAME>&repo=<REPONAME>[&background=<HEX-COLOR>&color=<HEX-COLOR>]
   ```
-  
+
 Github SVG Buttons will automatically fetch how many stars and forks there are.
