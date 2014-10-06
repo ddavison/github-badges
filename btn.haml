@@ -5,7 +5,7 @@
   'height'      => "18"}
   %linearGradient{'id' => 'a', 'x2' => 0, 'y2' => '100%'}
     %stop{'offset' => '0',
-          'stop-color' => '#fff',
+          'stop-color' => "##{opts[:color]}",
           'stop-opacity' => '.7'}
     %stop{'offset' => '.1',
           'stop-color' => '#aaa',
@@ -21,9 +21,9 @@
         'x' => '37',
         'width' => '53',
         'height' => '18',
-        'fill' => '#4c1'}
+        'fill' => "##{opts[:bg_color]}"}
 
-  %path{'fill' => '#4c1',
+  %path{'fill' => "##{opts[:bg_color]}",
         'd' => 'M37 0h4v18h-4z'}
 
   %rect{'rx'     => '4',
@@ -31,7 +31,7 @@
         'height' => '18',
         'fill'   => 'url(#a)'}
 
-  %g{'fill' => '#fff',
+  %g{'fill' => "##{opts[:color]}",
      'text-anchor' => 'middle',
      'font-family' => 'Verdana,Geneva,sans-serif',
      'font-size'   => '11'}
@@ -39,9 +39,9 @@
             'target' => '_new'}
       %text{'x' => '19.5',
             'y' => '13',
-            'fill' => '#fff'}= opts[:button_text]
+            'fill' => "##{opts[:color]}"}= opts[:button_text]
     %a#count-link{'xlink:href' => "#{opts[:count_url]}",
                   'target' => '_new'}
       %text#count{'x' => '62.5',
             'y' => '12',
-            'fill' => '#fff'}= opts[:count]
+            'fill' => "##{opts[:color]}"}= opts[:count]

@@ -21,8 +21,10 @@ end
 get '/star.svg' do
   if params[:user]
     if params[:repo]
-      user = params[:user]
-      repo = params[:repo]
+      user     = params[:user]
+      repo     = params[:repo]
+      bg_color = params[:background] || '#4c1' # default bg color to green
+      color    = params[:color]      || '#fff' # default text color to white
 
       star_count = get("https://api.github.com/repos/#{user}/#{repo}", 'stargazers_count', {user: user, repo: repo})
 
@@ -39,7 +41,9 @@ get '/star.svg' do
         :button_text => 'star',
         :count_url   => "https://github.com/#{user}/#{repo}/stargazers",
         :count       => star_count,
-        :button_url  => "https://github.com/#{user}/#{repo}"
+        :button_url  => "https://github.com/#{user}/#{repo}",
+        :bg_color    => bg_color,
+        :color       => color
       })
     else
       content_type 'text/plain'
@@ -54,8 +58,10 @@ end
 get '/fork.svg' do
   if params[:user]
     if params[:repo]
-      user = params[:user]
-      repo = params[:repo]
+      user     = params[:user]
+      repo     = params[:repo]
+      bg_color = params[:background] || '4c1' # default bg color to green
+      color    = params[:color]      || 'fff' # default text color to white
 
       fork_count = get("https://api.github.com/repos/#{user}/#{repo}", 'forks_count', {user: user, repo: repo})
 
@@ -72,7 +78,9 @@ get '/fork.svg' do
         :button_text => 'fork',
         :count_url   => "https://github.com/#{user}/#{repo}/network",
         :count       => fork_count,
-        :button_url  => "https://github.com/#{user}/#{repo}/fork"
+        :button_url  => "https://github.com/#{user}/#{repo}/fork",
+        :bg_color    => bg_color,
+        :color       => color
       })
     else
       content_type 'text/plain'
