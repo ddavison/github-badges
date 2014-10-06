@@ -23,8 +23,8 @@ get '/star.svg' do
     if params[:repo]
       user     = params[:user]
       repo     = params[:repo]
-      bg_color = params[:background] || '#4c1' # default bg color to green
-      color    = params[:color]      || '#fff' # default text color to white
+      bg_color = params[:background] ? params[:background] : '4c1' # default bg color to green
+      color    = params[:color] ? params[:color] : 'fff' # default text color to white
 
       star_count = get("https://api.github.com/repos/#{user}/#{repo}", 'stargazers_count', {user: user, repo: repo})
 
@@ -60,8 +60,8 @@ get '/fork.svg' do
     if params[:repo]
       user     = params[:user]
       repo     = params[:repo]
-      bg_color = params[:background] || '4c1' # default bg color to green
-      color    = params[:color]      || 'fff' # default text color to white
+      bg_color = params[:background] ? params[:background] : '4c1' # default bg color to green
+      color    = params[:color] ? params[:color] : 'fff' # default text color to white
 
       fork_count = get("https://api.github.com/repos/#{user}/#{repo}", 'forks_count', {user: user, repo: repo})
 
