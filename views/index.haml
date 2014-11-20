@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Create a button for your repo!
+    %title Create a button / badge for your repo!
     %script{:src => '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'}
     %script{:src => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js'}
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'}/
@@ -17,11 +17,11 @@
       %header
         %h1 GitHub SVG Buttons
         %address
-          Generate your own buttons...
+          Generate your own star / fork badges...
           %a{:href => 'https://github.com/ddavison/github-svg-buttons'}
-            %img{:alt => 'star this repo', :src => 'http://github-svg-buttons.herokuapp.com/star.svg?user=ddavison&repo=github-svg-buttons'}/
+            %img{:alt => 'star this repo', :src => 'http://githubbadges.com/star.svg?user=ddavison&repo=github-svg-buttons'}/
           %a{:href => 'https://github.com/ddavison/github-svg-buttons/fork'}
-            %img{:alt => 'fork this repo', :src => 'http://github-svg-buttons.herokuapp.com/fork.svg?user=ddavison&repo=github-svg-buttons'}/
+            %img{:alt => 'fork this repo', :src => 'http://githubbadges.com/fork.svg?user=ddavison&repo=github-svg-buttons'}/
       %main
         #codeThingy.modal
           .modal-dialog.modal-lg
@@ -88,7 +88,7 @@
 
           var githubUrl = "https://github.com/" + user + "/" + repo;
           var forkUrl = githubUrl + "/fork";
-          var baseUrl = "http://github-svg-buttons.herokuapp.com/";
+          var baseUrl = "http://githubbadges.com/";
           var outputTo = $("#output-to").val();
 
           // final variable to show user.
