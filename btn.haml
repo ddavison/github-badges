@@ -37,11 +37,23 @@
      'font-size'   => '11'}
     %a#link{'xlink:href' => "#{opts[:button_url]}",
             'target' => '_new'}
+      -# Shadow
+      %text{'x' => '19.5',
+            'y' => '14',
+            'fill-opacity' => '.3',
+            'fill' => '#010101'}= opts[:button_text]
+      -# Actual button text
       %text{'x' => '19.5',
             'y' => '13',
             'fill' => "##{opts[:color]}"}= opts[:button_text]
     %a#count-link{'xlink:href' => "#{opts[:count_url]}",
                   'target' => '_new'}
+      -# Shadow
+      %text#count{'x' => '62.5',
+            'y' => '14',
+            'fill-opacity' => '.3',
+            'fill' => '#010101'}= opts[:count]
+      -# Actual count text
       %text#count{'x' => '62.5',
             'y' => '13',
             'fill' => "##{opts[:color]}"}= opts[:count]
