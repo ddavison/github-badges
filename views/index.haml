@@ -50,13 +50,19 @@
           %hr/
           .form-group
             %label{:for => 'user'} GitHub Username/Organization
-            %input.form-control{:id => 'user', :type => 'text', :placeholder => 'enter the username of the repo'}
+            %input#user.form-control{:type => 'text', :placeholder => 'enter the username of the repo'}
             %label{:for => 'repo'} GitHub Repo
-            %input.form-control{:id => 'repo', :type => 'text', :placeholder => 'enter the repo name'}
+            %input#repo.form-control{:type => 'text', :placeholder => 'enter the repo name'}
             %label{:for => 'bg_color'} Background color (optional)
-            %input.form-control{:id => 'bg_color', :type => 'text', :value => '4c1'}
-            %label{:for => 'color'} Color (optional)
-            %input.form-control{:id => 'color', :type => 'text', :value => 'fff'}
+            %input#bg_color.form-control{:type => 'text', :value => '4c1'}
+            %label{:for => 'color'} Color
+            %input#color.form-control{:type => 'text', :value => 'fff'}
+            %label{:for => 'style'} Style
+            %select#style.form-control
+              %option{:value => 'default', :selected => 'selected'}
+                Default
+              %option{:value => 'flat'}
+                Flat
 
           %button.btn.btn-success{:id => 'btn-generate'}
             Generate!
@@ -76,6 +82,7 @@
 
           var bgColor = $("#bg_color").val();
           var color = $("#color").val();
+          var style = $("#style").val();
 
           var colorChanged = !(bgColor == '4c1' && color == 'fff');
 
@@ -87,8 +94,8 @@
           // final variable to show user.
           var output = "";
 
-          var starImg = baseUrl + "star.svg?user=" + user + "&repo=" + repo;
-          var forkImg = baseUrl + "fork.svg?user=" + user + "&repo=" + repo;
+          var starImg = baseUrl + "star.svg?user=" + user + "&repo=" + repo + "&style=" + style;
+          var forkImg = baseUrl + "fork.svg?user=" + user + "&repo=" + repo + "&style=" + style;
           if (colorChanged) {
             starImg += "&color=" + color + "&background=" + bgColor;
             forkImg += "&color=" + color + "&background=" + bgColor;
