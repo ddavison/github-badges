@@ -1,10 +1,10 @@
-github-svg-buttons
+GitHub Badges
 ===============
 
-[![star this repo](http://githubbadges.com/star.svg?user=ddavison&repo=github-svg-buttons)](http://github.com/ddavison/github-svg-buttons)
-[![fork this repo](http://githubbadges.com/fork.svg?user=ddavison&repo=github-svg-buttons)](http://github.com/ddavison/github-svg-buttons/fork)
-[![star this repo](http://githubbadges.com/star.svg?user=ddavison&repo=github-svg-buttons&style=flat&color=fff&background=007ec6)](https://github.com/ddavison/github-svg-buttons)
-[![fork this repo](http://githubbadges.com/fork.svg?user=ddavison&repo=github-svg-buttons&style=flat&color=fff&background=007ec6)](https://github.com/ddavison/github-svg-buttons/fork)
+[![star this repo](http://githubbadges.com/star.svg?user=ddavison&repo=github-badges)](http://github.com/ddavison/github-badges)
+[![fork this repo](http://githubbadges.com/fork.svg?user=ddavison&repo=github-badges)](http://github.com/ddavison/github-badges/fork)
+[![star this repo](http://githubbadges.com/star.svg?user=ddavison&repo=github-badges&style=flat&color=fff&background=007ec6)](https://github.com/ddavison/github-badges)
+[![fork this repo](http://githubbadges.com/fork.svg?user=ddavison&repo=github-badges&style=flat&color=fff&background=007ec6)](https://github.com/ddavison/github-badges/fork)
 
 
 # Using the buttons
@@ -28,6 +28,6 @@ GET http://githubbadges.com
 ```
 
 ### Example request
-[http://githubbadges.com/star.svg?user=ddavison&repo=github-svg-buttons&background=007ecg&color=bbb&style=flat](http://githubbadges.com/star.svg?user=ddavison&repo=github-svg-buttons&background=007ecg&color=bbb&style=flat)
+[http://githubbadges.com/star.svg?user=ddavison&repo=github-badges&background=007ecg&color=bbb&style=flat](http://githubbadges.com/star.svg?user=ddavison&repo=github-badges&background=007ecg&color=bbb&style=flat)
 
 Github SVG Buttons will automatically fetch how many stars and forks there are.
