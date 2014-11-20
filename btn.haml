@@ -1,17 +1,36 @@
 !!! XML
-%svg{'xmlns'    => "http://www.w3.org/2000/svg",
-  'xmlns:xlink' => "http://www.w3.org/1999/xlink",
-  'width'       => "90",
-  'height'      => "18"}
+
+%svg{'xmlns'    => 'http://www.w3.org/2000/svg',
+  'xmlns:xlink' => 'http://www.w3.org/1999/xlink',
+  'width'       => '90',
+  'height'      => '18'}
   %linearGradient{'id' => 'a', 'x2' => 0, 'y2' => '100%'}
-    %stop{'offset' => '0',
-          'stop-color' => "##{opts[:color]}",
-          'stop-opacity' => '.7'}
-    %stop{'offset' => '.1',
-          'stop-color' => '#aaa',
-          'stop-opacity' => '.1'}
-    %stop{'offset' => '1',
-          'stop-opacity' => '.5'}
+    - case opts[:style]
+      - when 'default'
+        %stop{'offset' => '0',
+              'stop-color' => "##{opts[:color]}",
+              'stop-opacity' => '.7'}
+        %stop{'offset' => '.1',
+              'stop-color' => '#aaa',
+              'stop-opacity' => '.1'}
+        %stop{'offset' => '1',
+              'stop-opacity' => '.5'}
+      - when 'flat'
+        %stop{'offset' => 0,
+              'stop-color' => "##{opts[:color]}",
+              'stop-opacity' => '.1'}
+        %stop{'offset' => 1,
+              'stop-opacity' => '.1'}
+      - else
+        -# Match default styling.
+        %stop{'offset' => '0',
+              'stop-color' => "##{opts[:color]}",
+              'stop-opacity' => '.7'}
+        %stop{'offset' => '.1',
+              'stop-color' => '#aaa',
+              'stop-opacity' => '.1'}
+        %stop{'offset' => '1',
+              'stop-opacity' => '.5'}
   %rect{'rx' => '4',
         'width' => '90',
         'height' => '18',
