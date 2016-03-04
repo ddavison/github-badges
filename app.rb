@@ -76,22 +76,13 @@ def fetch(api_url, prop, args)
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
   request = Net::HTTP::Get.new(uri.request_uri)
+  request.add_field 'If-Modified-Since', File.stat(cached_response).mtime.getgm.strftime('%a, %d %b %Y %H:%M:%S GMT') if File.exist?(cached_response)
 
-  if File.exist?(cached_response)
-    request['If-Modified-Since'] = File.stat(cached_response).mtime.rfc2822
+  response = http.request(request)
 
-    response = http.request(request)
-    p response
-
-    open cached_response, 'w' do |io|
-      io.write response.body
-    end if response.is_a?(Net::HTTPSuccess)
-  else
-    response = http.request(request)
-    open cached_response, 'w' do |io|
-      io.write response.body
-    end
-  end
+  open cached_response, 'w' do |io|
+    io.write response.body
+  end if response.is_a? Net::HTTPSuccess
 
   JSON.parse(File.read(cached_response))[prop]
 end
