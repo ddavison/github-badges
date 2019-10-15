@@ -31,3 +31,10 @@ GET http://githubbadges.com
 [http://githubbadges.com/star.svg?user=ddavison&repo=github-badges&background=007ecg&color=bbb&style=flat](http://githubbadges.com/star.svg?user=ddavison&repo=github-badges&background=007ecg&color=bbb&style=flat)
 
 Github SVG Buttons will automatically fetch how many stars and forks there are.
+
+
+### Develop
+
+- `bundle install`
+- `bundle exec ruby app.rb`
+- Server should now be running at http://localhost:4567/
