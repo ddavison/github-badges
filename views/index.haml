@@ -124,8 +124,8 @@
               output = starHtml + '\n' + forkHtml;
               break;
             case "haml":
-              var starHaml = "%a{:href => '" + githubUrl + "'}\n  %img{:alt => 'star this repo', :src => '" + starImg + "'}/"
-              var forkHaml = "%a{:href => '" + forkUrl + "'}\n  %img{:alt => 'fork this repo', :src => '" + forkImg + "'}/"
+              var starHaml = "%a{href: '" + githubUrl + "'}\n  %img{alt: 'star this repo', src: '" + starImg + "'}/"
+              var forkHaml = "%a{href: '" + forkUrl + "'}\n  %img{alt: 'fork this repo', src: '" + forkImg + "'}/"
               output = starHaml + '\n' + forkHaml;
               break;
           }
