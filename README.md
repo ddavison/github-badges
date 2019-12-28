@@ -25,6 +25,7 @@ GET http://githubbadges.com
    Options:
     - `default` :  The default 'bubble' style
     - `flat` :  A flat style
+    - `flat-square` :  A flat style with no border-radius
 ```
 
 ### Example request
