@@ -21,6 +21,12 @@
               'stop-opacity' => '.1'}
         %stop{'offset' => 1,
               'stop-opacity' => '.1'}
+      - when 'flat-square'
+        %stop{'offset' => 0,
+              'stop-color' => "##{opts[:color]}",
+              'stop-opacity' => '.1'}
+        %stop{'offset' => 1,
+              'stop-opacity' => '.1'}
       - else
         -# Match default styling.
         %stop{'offset' => '0',
@@ -31,24 +37,41 @@
               'stop-opacity' => '.1'}
         %stop{'offset' => '1',
               'stop-opacity' => '.5'}
-  %rect{'rx' => '3',
-        'width' => '80',
-        'height' => '20',
-        'fill' => '#555'}
-
-  %rect{'rx' => '3',
-        'x' => '37',
-        'width' => '43',
-        'height' => '20',
-        'fill' => "##{opts[:bg_color]}"}
+  - case opts[:style]
+    - when 'flat-square'
+      %rect{'width' => '80',
+            'height' => '20',
+            'fill' => '#555'}
+    - else
+      %rect{'rx' => '3',
+            'width' => '80',
+            'height' => '20',
+            'fill' => '#555'}
+  - case opts[:style]
+    - when 'flat-square'
+      %rect{'x' => '37',
+            'width' => '43',
+            'height' => '20',
+            'fill' => "##{opts[:bg_color]}"}
+    - else
+      %rect{'rx' => '3',
+            'x' => '37',
+            'width' => '43',
+            'height' => '20',
+            'fill' => "##{opts[:bg_color]}"}
 
   %path{'fill' => "##{opts[:bg_color]}",
         'd' => 'M37 0h4v20h-4z'}
-
-  %rect{'rx'     => '3',
-        'width'  => '80',
-        'height' => '20',
-        'fill'   => 'url(#a)'}
+  - case opts[:style]
+    - when 'flat-square'
+      %rect{'width'  => '80',
+            'height' => '20',
+            'fill'   => 'url(#a)'}
+    - else
+      %rect{'rx'     => '3',
+            'width'  => '80',
+            'height' => '20',
+            'fill'   => 'url(#a)'}
 
   %g{'fill' => "##{opts[:color]}",
      'text-anchor' => 'middle',
