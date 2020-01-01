@@ -5,7 +5,8 @@ GitHub Badges
 [![fork this repo](http://githubbadges.com/fork.svg?user=ddavison&repo=github-badges)](http://github.com/ddavison/github-badges/fork)
 [![star this repo](http://githubbadges.com/star.svg?user=ddavison&repo=github-badges&style=flat&color=fff&background=007ec6)](https://github.com/ddavison/github-badges)
 [![fork this repo](http://githubbadges.com/fork.svg?user=ddavison&repo=github-badges&style=flat&color=fff&background=007ec6)](https://github.com/ddavison/github-badges/fork)
-
+[![star this repo](https://githubbadges.com/star.svg?user=ddavison&repo=github-badges&style=flat-square&color=fff&background=888)](https://github.com/ddavison/github-badges)
+[![fork this repo](https://githubbadges.com/fork.svg?user=ddavison&repo=github-badges&style=flat-square&color=fff&background=888)](https://github.com/ddavison/github-badges/fork)
 
 # Using the buttons
 ```
