@@ -1,12 +1,7 @@
-GitHub Badges
+GitHub Badges (DISCONTINUED)
 ===============
 
-[![star this repo](http://githubbadges.com/star.svg?user=ddavison&repo=github-badges)](http://github.com/ddavison/github-badges)
-[![fork this repo](http://githubbadges.com/fork.svg?user=ddavison&repo=github-badges)](http://github.com/ddavison/github-badges/fork)
-[![star this repo](http://githubbadges.com/star.svg?user=ddavison&repo=github-badges&style=flat&color=fff&background=007ec6)](https://github.com/ddavison/github-badges)
-[![fork this repo](http://githubbadges.com/fork.svg?user=ddavison&repo=github-badges&style=flat&color=fff&background=007ec6)](https://github.com/ddavison/github-badges/fork)
-[![star this repo](https://githubbadges.com/star.svg?user=ddavison&repo=github-badges&style=flat-square&color=fff&background=888)](https://github.com/ddavison/github-badges)
-[![fork this repo](https://githubbadges.com/fork.svg?user=ddavison&repo=github-badges&style=flat-square&color=fff&background=888)](https://github.com/ddavison/github-badges/fork)
+> This project has unfortunately been discontinued once Heroku's [Free Plans had expired](https://help.heroku.com/RSBRUH58/removal-of-heroku-free-product-plans-faq).
 
 # Using the buttons
 ```
